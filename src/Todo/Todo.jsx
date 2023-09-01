@@ -1,34 +1,49 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import "./style.css";
 export default function Todo() {
     const [atividade, setAtividade] = useState("");
     const [lista, setLista] = useState([]);
-    const [idCount, setIdCount] = useState(1);
+    const [idCriar, setIdCriar] = useState(1);
 
     const salvar = (e) => {
         e.preventDefault();
         setLista([...lista, {
-            id:idCount,
+            id:idCriar,
             atividade:atividade
         }]);
         setAtividade("")
-        setIdCount(idCount + 1)
+        setIdCriar(idCriar + 1)
     };
 
+    const remover = (id) => {
+        const auxLista = [];
+        lista.map((lista) => {
+            if (lista.id !== id) {
+                auxLista.push(lista);
+            }
+        });
+        setLista(auxLista);
+    }
+
     return(
-        <div>
+        <div class="container">
             <Link to="/">home</Link>
             <h1>Lista de Atividades</h1>
             <form onSubmit={salvar}>
                 <input type="text"
+                value={atividade}
                 onChange={(e)=>
                 {setAtividade(e.target.value)}} />
-                <button>ADD</button>
+                <button>ADICIONAR</button>
             </form>
             {lista.map((ativ)=>
-            <div>
-                <p key={ativ.id}> {ativ.id}: {ativ.atividade}</p>
-            </div>
+            <ul key={ativ.id}>
+                <li>
+                <p>{ativ.atividade}</p>
+                <button onClick={() => remover(ativ.id)}>REMOVER</button>
+                </li>
+            </ul>
             )};
         </div>
     )
