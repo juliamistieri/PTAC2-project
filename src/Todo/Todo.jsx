@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
+
 export default function Todo() 
     const [lista, setLista] = useState([]);
     const [idCriar, setIdCriar] = useState(1);
@@ -30,10 +31,10 @@ export default function Todo()
     }
 
     return(
-        <div class="container">
+        <div className="relampago">
             <Link to="/">home</Link>
             <h1>Lista de Carros</h1>
-            <img src={} alt="imagem" width="100" height="50"></img>
+            <img src={supra.jpg} alt="imagem" width="100" height="50"></img>
             <form onSubmit={salvar}>
                 <input type="text"
                 value={carros}
@@ -48,7 +49,8 @@ export default function Todo()
             {lista.map((carros)=>
             <ul key={carros.id}>
                 <li>
-                <p>{carros.id}</p>
+                <p>{carros.carros}</p>
+                <p>{carros.marca}</p>
                 <button onClick={() => remover(carros.id)}>REMOVER</button>
                 </li>
             </ul>

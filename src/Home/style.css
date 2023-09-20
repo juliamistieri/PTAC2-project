@@ -1,0 +1,28 @@
+.casaEstilo {
+  background-color: aquamarine;
+  color: azure;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.casaEstilo h2 {
+    font-size: 20px;
+}
+
+.casaEstilo img {
+    margin-top: 20px;
+}
+
+.casaEstilo p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.casaEstilo input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 12px;
+}
