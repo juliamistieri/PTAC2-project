@@ -1,26 +1,29 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
-export default function Todo() {
-    const [atividade, setAtividade] = useState("");
+export default function Todo() 
     const [lista, setLista] = useState([]);
     const [idCriar, setIdCriar] = useState(1);
+    const [carros, setCarros] = useState("");
+    const [marca, setMarca] = useState("");
 
     const salvar = (e) => {
         e.preventDefault();
         setLista([...lista, {
             id:idCriar,
-            atividade:atividade
+            carros:carros,
+            marca:marca
         }]);
-        setAtividade("")
+        setCarros("")
+        setMarca("")
         setIdCriar(idCriar + 1)
     };
 
     const remover = (id) => {
         const auxLista = [];
-        lista.map((lista) => {
-            if (lista.id !== id) {
-                auxLista.push(lista);
+        lista.map((carros) => {
+            if (carros.id !== id) {
+                auxLista.push(carros);
             }
         });
         setLista(auxLista);
@@ -29,22 +32,26 @@ export default function Todo() {
     return(
         <div class="container">
             <Link to="/">home</Link>
-            <h1>Lista de Atividades</h1>
+            <h1>Lista de Carros</h1>
+            <img src={} alt="imagem" width="100" height="50"></img>
             <form onSubmit={salvar}>
                 <input type="text"
-                value={atividade}
+                value={carros}
                 onChange={(e)=>
-                {setAtividade(e.target.value)}} />
+                {setCarros(e.target.value)}} />
+                <input type="text"
+                value={marca}
+                onChange={(e)=>
+                {setMarca(e.target.value)}} />
                 <button>ADICIONAR</button>
             </form>
-            {lista.map((ativ)=>
-            <ul key={ativ.id}>
+            {lista.map((carros)=>
+            <ul key={carros.id}>
                 <li>
-                <p>{ativ.atividade}</p>
-                <button onClick={() => remover(ativ.id)}>REMOVER</button>
+                <p>{carros.id}</p>
+                <button onClick={() => remover(carros.id)}>REMOVER</button>
                 </li>
             </ul>
             )};
         </div>
     )
-}
